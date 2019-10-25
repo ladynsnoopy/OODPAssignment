@@ -1,45 +1,77 @@
 package cinema;
-public class Movie_goer {
-	private String _name;
-	private long _mobileNumber;
-	private String _email;
-	private Payment[] _bookingHistory;
-	private int _age;
-	public Payment _unnamed_Payment_;
 
-	public String getName() {
-		return this._name;
+import java.util.ArrayList;
+
+public class MovieGoer {
+	private String name;
+	private long mobileNumber;
+	private String email;
+	private int age;
+	private ArrayList<Payment> bookingHistory;
+	
+	public MovieGoer(String name, long mobileNumber, String email, int age) {
+		this.name = name;
+		this.mobileNumber = mobileNumber;
+		this.email = email;
+		this.age = age;
+		this.bookingHistory = new ArrayList<Payment>();
+	}
+	public void addBookinghistory(Payment s) {
+		bookingHistory.add(s);
+	}
+	public String getBookinghistory()
+	{
+		String a = "";
+		for(int i = 0; i<bookingHistory.size();i++)
+		{
+			a += bookingHistory.get(i).getAllInfo();
+			a += "| \n";
+		}
+		return a;
 	}
 
-	public void setName(String aName) {
-		this._name = aName;
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public long getMobileNumber() {
-		return this._mobileNumber;
+		return mobileNumber;
 	}
 
-	public Payment[] getBookingHistory() {
-		return this._bookingHistory;
+	public void setMobileNumber(long mobileNumber) {
+		this.mobileNumber = mobileNumber;
 	}
 
-	public void setBookingHistory(Payment[] aBookingHistory) {
-		this._bookingHistory = aBookingHistory;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setCinema(Cinema aCinema) {
-		throw new UnsupportedOperationException();
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public int getAge() {
-		return this._age;
+		return age;
 	}
 
-	public void setAge(int aAge) {
-		this._age = aAge;
+	public void setAge(int age) {
+		this.age = age;
 	}
 
-	public void setMobileNumber(long aMobileNumber) {
-		this._mobileNumber = aMobileNumber;
+	public ArrayList<Payment> getBookingHistory() {
+		return bookingHistory;
 	}
+
+	public void setBookingHistory(ArrayList<Payment> bookingHistory) {
+		this.bookingHistory = bookingHistory;
+	}
+	
+	
+	
+
 }
