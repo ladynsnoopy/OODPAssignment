@@ -4,10 +4,10 @@ public class Review {
 	private int rating;
 	private String review;
 	//private Movie_goer moive_goer;
-	private int Movie_goerID; // CHANGE to Movie_goer object later
+	private MovieGoer Movie_goerID; 
 	
 
-	public Review(int rating, String review,int moive_goer) {
+	public Review(int rating, String review,MovieGoer moive_goer) {
 		super();
 		this.rating = rating;
 		this.review = review;
@@ -35,18 +35,18 @@ public class Review {
 	}
 
 
-	public int getMovie_goerID() {
+	public MovieGoer getMovie_goerID() {
 		return Movie_goerID;
 	}
 
 
-	public void setMovie_goerID(int movie_goerID) {
+	public void setMovie_goerID(MovieGoer movie_goerID) {
 		Movie_goerID = movie_goerID;
 	}
 
    // function to get all info associated with the review
 	public String getAllinfo() {
-		return "[rating=" + rating + ", review=" + review + ", Movie_goerID=" + Movie_goerID + "]";
+		return "[rating=" + rating + ", review=" + review + ", Movie_goerID=" + Movie_goerID.getName() + "]";
 	}
 	
 
