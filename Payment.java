@@ -1,13 +1,33 @@
 package cinema;
-public class Payment {
-	private int _tID;
-	public Movie_goer _unnamed_Movie_goer_;
-
-	public int getTID() {
-		return this._tID;
+public class Payment extends Ticket{
+	private String tID;
+	private MovieGoer moviegoer;
+	// TID format
+	//XXXYYYYMMDDhhmm (Y : year, M : month, D : day, h : hour, m : minutes, XXX : cinema code in letters). 
+	public Payment(String genre, Showtime showtime, int age,MovieGoer moviegoer) {
+		super(genre, showtime, age);
+		String a = showtime.getDatetime();
+		a += showtime.getCinema().getCinema_num();
+		this.tID =a;
+		this.moviegoer = moviegoer;
+		
+		// TODO Auto-generated constructor stub
 	}
-
-	public void setTID(int aTID) {
-		this._tID = aTID;
+	public String get_tID() {
+		return tID;
 	}
+	public MovieGoer getMoviegoer() {
+		return moviegoer;
+	}
+	public void setMoviegoer(MovieGoer moviegoer) {
+		this.moviegoer = moviegoer;
+	}
+	public String getAllInfo()
+	{
+		return ("Transaction ID: "+this.get_tID()+"\n "+ super.getShowtime().getAllInfo()+"\n");
+	}
+	
+	
+	
+	
 }
