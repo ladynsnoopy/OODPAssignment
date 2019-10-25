@@ -1,21 +1,21 @@
 package cinema;
 public class Staff {
-	private int _staffID;
-	private String _password;
+	private int staffID;
+	private String password;
 
 	public int getStaffID() {
-		return this._staffID;
+		return this.staffID;
 	}
 
 	public void setStaffID(int aStaffID) {
-		this._staffID = aStaffID;
+		this.staffID = aStaffID;
 	}
 
 	public String getPassword() {
-		return this._password;
+		return this.password;
 	}
 
 	public void setPassword(String aPassword) {
-		this._password = aPassword;
+		this.password = aPassword;
 	}
 }
