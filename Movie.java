@@ -1,7 +1,8 @@
 package cinema;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Arrays;
-public class Movie{
+public class Movie implements Comparable<Movie>{
 	private String genre;
 	private String showing_status;
 	private String synopsis;
@@ -30,6 +31,16 @@ public class Movie{
 		this.ticketSales = 0;  // initial ticket sales = 0
 		this.showtimes = new ArrayList<Showtime>(); ;  // give later
 	}
+	public Movie copy()
+	{
+		Movie a = new Movie(this.genre,this.showing_status,this.synopsis,this.director,this.cast,this.title);
+		a.setTicketSales(this.ticketSales);
+		a.setReview(this.past_reviews);
+		a.setOverall_rating();
+		a.setShowtime(this.showtimes);
+		return a;
+		
+	}
 	
 
 	public String getGenre() {
@@ -38,6 +49,14 @@ public class Movie{
 
 	public void setGenre(String genre) {
 		this.genre = genre;
+	}
+	public void setReview(ArrayList<Review> a)
+	{
+		this.past_reviews = a;
+	}
+	public void setShowtime(ArrayList<Showtime> a)
+	{
+		this.showtimes = a;
 	}
 
 
@@ -75,9 +94,15 @@ public class Movie{
 		return overall_rating;
 	}
 
-	public void setOverall_rating(double overall_rating) {
-		this.overall_rating = overall_rating;
+	public void setOverall_rating() {
+		int total=0;
+		//TODO Every time you add a new review, you need to recalculate the average
+		for(int i=0; i<past_reviews.size();i++) {
+			total = total + past_reviews.get(i).getRating();
+		}
+		overall_rating = total/past_reviews.size();
 	}
+
 
 	public String getTitle() {
 		return title;
@@ -135,6 +160,16 @@ public class Movie{
 				+ Arrays.toString(director) + ", cast=" + Arrays.toString(cast) + ",\noverall_rating=" + overall_rating
 				+  ", title=" + title + ", ticketSales=" + ticketSales+ ",\npast_reviews=" + getReviews()+ ",\nshowtimes=" +getShowtimes();
 	}
+	public int compareTo(Movie a)
+	{
+		if(a.getTicketSales()> this.ticketSales)
+			return -1;
+		else if(a.getTicketSales() == this.ticketSales)
+			return 0;
+		else
+			return 1;
+	}
+
 	
 
 }
