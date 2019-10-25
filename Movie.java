@@ -36,7 +36,7 @@ public class Movie implements Comparable<Movie>{
 		Movie a = new Movie(this.genre,this.showing_status,this.synopsis,this.director,this.cast,this.title);
 		a.setTicketSales(this.ticketSales);
 		a.setReview(this.past_reviews);
-		a.setOverall_rating();
+		a.setAvgOverall_rating();
 		a.setShowtime(this.showtimes);
 		return a;
 		
@@ -94,7 +94,7 @@ public class Movie implements Comparable<Movie>{
 		return overall_rating;
 	}
 
-	public void setOverall_rating() {
+	public void setAvgOverall_rating() {
 		int total=0;
 		//TODO Every time you add a new review, you need to recalculate the average
 		for(int i=0; i<past_reviews.size();i++) {

@@ -27,7 +27,10 @@ public class Payment extends Ticket{
 		return ("Transaction ID: "+this.get_tID()+"\n "+ super.getShowtime().getAllInfo()+"\n");
 	}
 	
-	
+	public void buyTicket(int x, int y) {
+		super.getShowtime().getCinema().changeSeatStatus(x-1, y-1);
+		super.getShowtime().getMovie().increaseTicketSales();
+	}
 	
 	
 }

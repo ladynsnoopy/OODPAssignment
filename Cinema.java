@@ -76,11 +76,11 @@ public class Cinema {
 		System.out.println("--------------SCREEN--------------");
 		System.out.print("   ");
 		for (int i=0;i<num_col;i++) {
-			System.out.print(i + " ");
+			System.out.print((i+1) + " ");
 		}
 		System.out.println();
 		for(int j=0;j<num_row;j++) {
-			System.out.print(j + "  ");
+			System.out.print((j+1) + "  ");
 			for(int k=0;k<num_col;k++) {
 				if(seatingplan[j][k] == true)
 					System.out.print("X ");
@@ -91,6 +91,15 @@ public class Cinema {
 		}
 	}
 	
-	
+	public void changeSeatStatus(int xCoor, int yCoor) {
+		int totalSeatNum = num_row*num_col;
+		for (int i=0;i<(totalSeatNum);i++) {
+			if(!listOfSeats[i].getOccupied_status() && listOfSeats[i].getX()==xCoor && listOfSeats[i].getY()==yCoor) {
+				listOfSeats[i].setOccupied_status(true);
+				return;
+			}
+		}
+		System.out.println("ERROR: this seat is taken");
+	}
 
 }
