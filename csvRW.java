@@ -12,7 +12,7 @@ public class csvRW {
 	public static int search(String dbname, String target) {
 		String path = "./resources/" + dbname + ".csv";
 		BufferedReader in;
-		int count = 0;
+		//int count = 0; // no need a count variable can use size()
 		try {
 			in = new BufferedReader(new FileReader(path));
 			String row;
@@ -20,11 +20,11 @@ public class csvRW {
 
 			while ((row = in.readLine()) != null) {
 				String[] rowData = row.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
-				count++;
+				//count++;
 				csvData.add(rowData);
 			}
 			in.close();
-			for (int i = 0; i <= count; i++) {
+			for (int i = 0; i < csvData.size(); i++) {
 				if (csvData.get(i)[0].equals(target)) {
 					return i;
 				}
@@ -45,7 +45,7 @@ public class csvRW {
 		try {
 			BufferedReader in = new BufferedReader(new FileReader(path));
 			StringBuffer sb = new StringBuffer("");
-			int lineno = 1;
+			int lineno = 0; // I changed here, should be zero 
 			String row;
 
 			while ((row = in.readLine()) != null) {
