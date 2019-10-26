@@ -111,4 +111,49 @@ public class csvRW {
 		}
 		return null;
 	}
+	public static void editCSV(String dbname, int targetRow,int targetcol,int totalcol,String change) {
+		String path = "./resources/" + dbname + ".csv";
+		try {
+			BufferedReader in = new BufferedReader(new FileReader(path));
+			StringBuffer sb = new StringBuffer("");
+			int lineno = 0;
+			String row;
+			while ((row = in.readLine()) != null) {
+				if (lineno != targetRow)
+					sb.append(row + "\n");
+				else if(lineno == targetRow)
+				{
+					String[] rowData = row.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
+					rowData[targetcol] = change;
+					for(int i = 0;i<totalcol;i++)
+					{
+						if(i == totalcol-1)
+						{
+							sb.append(rowData[i]+"\n");
+						}
+						else
+						{
+							sb.append(rowData[i]);
+							sb.append(",");
+						}
+			
+					}
+				}
+				lineno++;
+			}
+			in.close();
+
+			FileWriter fw = new FileWriter(new File(path));
+			// Write entire string buffer into the file
+			fw.write(sb.toString());
+			fw.close();
+
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }
