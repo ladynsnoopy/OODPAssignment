@@ -26,7 +26,7 @@ public class csvRW {
 			in.close();
 			for (int i = 0; i <= count; i++) {
 				if (csvData.get(i)[0].equals(target)) {
-					return i+1;
+					return i;
 				}
 			}
 		} catch (FileNotFoundException e) {

@@ -9,17 +9,18 @@ public class readwriteTest {
 		//read data test
 		//returns an array of string array
 		List<String[]> csvData =  new ArrayList<String[]>();
-		csvData = csvRW.readCSV("moviedatabase");
-		//example of going thru data
-		int i = Integer.parseInt(csvData.get(0)[6]);
-		System.out.println(i);
-		//more example 
+		csvData = csvRW.readCSV("staffdatabase");
+		//example of going thru data-change the string to int
+		//int i = Integer.parseInt(csvData.get(0)[0]);
+		//System.out.println(i);
+		//more example to just print all the data
 		for (int j=0; j<csvData.size();j++) {
-			System.out.println(csvData.get(i)[0]);
+			System.out.println(csvData.get(j)[0]);
 		}
 		
 		//search example to find the row data is in
-		//i can change this to return the row instead
+		//i can change this to return the whole row instead
+		//search returns -1 if data not there
 		int a = csvRW.search("staffdatabase", "gv003");
 		System.out.println(a);
 		
