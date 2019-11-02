@@ -115,7 +115,7 @@ public class csvRW {
 		return null;
 	}
 
-	public static void editCSV(String dbname, int targetRow, int targetcol, int totalcol, String change) {
+	public static void editCSV(String dbname, int targetRow, int targetcol, String change) {
 		String path = "./resources/" + dbname + ".csv";
 		try {
 			BufferedReader in = new BufferedReader(new FileReader(path));
@@ -131,7 +131,7 @@ public class csvRW {
 					String[] rowData = row.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
 					//rowData[targetcol] = change;
 					//	System.out.println(rowData[targetcol]);
-					
+					int totalcol = rowData.length;
 					for (int i = 0; i < totalcol; i++) {
 						if (i==targetcol && i==totalcol-1) {
 							sb.append(change + "\n");
