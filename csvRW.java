@@ -168,6 +168,8 @@ public class csvRW {
 			e.printStackTrace();
 		}
 	}
+	
+	
 	private static String format(String str) {
 	    return "\"" + str + "\"";
 	}
