@@ -71,7 +71,7 @@ public class csvRW {
 
 	// write data to bottom of csv file
 	// takes in data as List<String>
-	public static void writeToCSV(String dbname, List<String> data) {
+	public static void writeToCSV(String dbname, ArrayList<String> data) {
 
 		String path = "./resources/" + dbname + ".csv";
 		// List<String> newrow = Arrays.asList("user","pw");
@@ -91,7 +91,7 @@ public class csvRW {
 	}
 
 	// Read database file based on name
-	public static List<String[]> readCSV(String dbname) {
+	public static ArrayList<String[]> readCSV(String dbname) {
 		try {
 			String path = "./resources/" + dbname + ".csv";
 			BufferedReader in = new BufferedReader(new FileReader(path));
